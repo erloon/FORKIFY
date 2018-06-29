@@ -12,7 +12,6 @@ export default class Search {
         try {
             const retval = await axios(`${proxy}${link}${parameters}`);
             this.result = retval.data.recipes;
-            console.log(result.data.recipes);
         } catch (error) {
             alert(error);
         }

@@ -1,14 +1,5 @@
-import axios from 'axios';
+import Search from './models/Search';
 
-async function getResults(query) {
-    const key = '2358affaa464e855cda1bb60cdd55165';
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const parameters = `key=${key}&q=${query}`;
-    const link = 'http://food2fork.com/api/search?';
-
-    const result = await axios(`${proxy}${link}${parameters}`);
-
-    console.log(`${proxy}${link}${parameters}`);
-    console.log(result.data.recipes);
-}
-getResults('pizza');
+const search = new Search("pizza");
+search.getResults();
+console.log(search.query);
