@@ -9,8 +9,6 @@ async function getResults(query) {
     const result = await axios(`${proxy}${link}${parameters}`);
 
     console.log(`${proxy}${link}${parameters}`);
-    console.log(result);
+    console.log(result.data.recipes);
 }
 getResults('pizza');
-'2358affaa464e855cda1bb60cdd55165'
-'http://food2fork.com/api/search'
