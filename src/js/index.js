@@ -1,6 +1,10 @@
 import Search from './models/Search';
-import * as searchView from './views/searchView'; 
-import {elements} from './views/base';
+import * as searchView from './views/searchView';
+import {
+    elements,
+    renderLoader,
+    clearRender
+} from './views/base';
 
 const state = {}
 
@@ -12,10 +16,11 @@ const controlSearch = async () => {
 
         searchView.clearInput();
         searchView.clearResults();
-
+        renderLoader(elements.searchRes);
         //wyszukanie przepisów
         await state.search.getResults();
 
+        clearRender()
         //wyniki na UI
         searchView.renderResults(state.search.result);
     }
