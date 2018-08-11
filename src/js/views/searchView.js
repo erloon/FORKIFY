@@ -20,7 +20,7 @@ export const highlightSelected = id =>{
     document.querySelector(`a[href*="${id}"]`).classList.add('result__link--active');
 };
 
-const lineRecipeTitle = (title, limit = 17) => {
+export const lineRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
     if (title.length > limit) {
         title.split(' ').reduce((acc, cur) => {
