@@ -10,6 +10,16 @@ export const clearResults = () => {
     elements.searchResultList.innerHTML = '';
     elements.searchResPages.innerHTML = '';
 };
+
+export const highlightSelected = id =>{
+    const resultsArr = Array.from(document.querySelectorAll('.results__link'));
+    resultsArr.forEach(el=>{
+      el.classList.remove('result__link--active');  
+    });
+
+    document.querySelector(`a[href*="${id}"]`).classList.add('result__link--active');
+};
+
 const lineRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
     if (title.length > limit) {

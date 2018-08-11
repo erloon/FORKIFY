@@ -1,6 +1,7 @@
 import Search from './models/Search';
 import Recepie from './models/Recepie';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 import {
     elements,
     renderLoader,
@@ -54,6 +55,10 @@ const controlRecaipe = async () => {
         const id = window.location.hash.replace('#', '');
 
         if (id) {
+            recipeView.clearRecipe();
+            renderLoader(elements.recipe);
+
+            if(state.search) searchView.highlightSelected(id);
 
             state.recipe = new Recepie(id);
 
@@ -62,6 +67,9 @@ const controlRecaipe = async () => {
                 state.recipe.parseIngredients();
                 state.recipe.calcTime();
                 state.recipe.calcServings();
+
+                clearRender();
+                recipeView.rendeRecipe(state.recipe);
 
             } catch (error) {
                 alert(error);
